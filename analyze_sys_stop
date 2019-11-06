@@ -1,0 +1,11 @@
+service analyze_sys_stop
+{
+    disable = no
+    port  = 9998
+    socket_type   = stream
+    protocol    = tcp
+    wait      = no
+    user      = root
+    server     = bjk/analyze_sys_stop.sh
+    server_args   = test
+}
