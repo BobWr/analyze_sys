@@ -19,8 +19,6 @@ sudo wget https://raw.githubusercontent.com/BobWr/analyze_sys/master/analyze_sys
 sudo sed -i "s?bjk?$SAR_DIR?g" analyze_sys_start
 sudo sed -i "s?bjk?$SAR_DIR?g" analyze_sys_stop
 
-sudo 
-
 #配置services，注释并添加 $serviceName    $port/tcp
 if [ -f /etc/services.bak.bjk ]
 then
@@ -35,7 +33,8 @@ sudo sed -i 's?distinct        9999/udp                # distinct?#distinct     
 sudo sed -i 's?distinct32      9998/tcp                # Distinct32?analyze_sys_stop        9998/tcp?g'   /etc/services
 sudo sed -i 's?distinct32      9998/udp                # Distinct32?#distinct32      9998/udp                # Distinct32?g'   /etc/services
 #重启xinetd服务
-sudo systemctl restart xinetd.service
+sudo systemctl stop xinetd.service
+sudo systemctl start xinetd.service
 
 #下载脚本
 cd $SAR_DIR
