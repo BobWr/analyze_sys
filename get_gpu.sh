@@ -1,6 +1,6 @@
 #!/bin/sh
 
-SAR_DIR=$1
+SAR_DIR=`pwd`
 DATA_DIR=$SAR_DIR/data
 
 touch $DATA_DIR/gpu.log
