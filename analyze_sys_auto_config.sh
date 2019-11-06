@@ -34,10 +34,19 @@ sudo echo \
     server_args   = test
 }" > /etc/xinetd.d/analyze_sys_stop
 #配置services，注释并添加 $serviceName    $port/tcp
-sed -i 's?distinct        9999/tcp                # distinct?analyze_sys_start        9999/tcp?g'   /etc/services
-sed -i 's?distinct        9999/udp                # distinct?#distinct        9999/udp                # distinct?g'   /etc/services
-sed -i 's?distinct        9998/tcp                # distinct?analyze_sys_stop        9998/tcp?g'   /etc/services
-sed -i 's?distinct        9998/udp                # distinct?#distinct        9998/udp                # distinct?g'   /etc/services
+
+if [ -f /etc/services.bak.bjk ]
+then
+  sudo rm -f /etc/services
+  sudo cp /etc/services.bak.bjk /etc/services
+else
+  sudo cp /etc/services /etc/services.bak.bjk
+fi
+
+sudo sed -i 's?distinct        9999/tcp                # distinct?analyze_sys_start        9999/tcp?g'   /etc/services
+sudo sed -i 's?distinct        9999/udp                # distinct?#distinct        9999/udp                # distinct?g'   /etc/services
+sudo sed -i 's?distinct32      9998/tcp                # Distinct32?analyze_sys_stop        9998/tcp?g'   /etc/services
+sudo sed -i 's?distinct32      9998/udp                # Distinct32?#distinct32      9998/udp                # Distinct32?g'   /etc/services
 #重启xinetd服务
 sudo systemctl restart xinetd.service
 
