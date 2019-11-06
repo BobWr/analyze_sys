@@ -1,7 +1,7 @@
 #!/bin/bash
 
-SAR_DIR=`pwd`
-sleep 1
+script_abs=$(readlink -f "$0")
+SAR_DIR=$(dirname $script_abs)
 DATA_DIR=$SAR_DIR/data
 
 rm -rf $DATA_DIR/*
