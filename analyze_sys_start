@@ -6,6 +6,6 @@ service analyze_sys_start
     protocol    = tcp
     wait      = no
     user      = root
-    server     = $SAR_DIR/analyze_sys_start.sh
+    server     = bjk/analyze_sys_start.sh
     server_args   = test
 }
