@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SAR_DIR=$1
+SAR_DIR=`pwd`
 DATA_DIR=$SAR_DIR/data
 rm -rf $DATA_DIR/*
 
@@ -8,7 +8,7 @@ sar -u 1 > $DATA_DIR/cpu.log &
 sar -n DEV 1 > $DATA_DIR/net.log &
 sar -r 1 > $DATA_DIR/mem.log &
 sar -b 1 > $DATA_DIR/io.log &
-$SAR_DIR/get_gpu.sh $SAR_DIR &
+/bin/sh $SAR_DIR/get_gpu.sh $SAR_DIR &
 
 DATA="Analyze start."
 length=${#DATA}
