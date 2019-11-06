@@ -1,0 +1,11 @@
+service analyze_sys_start
+{
+    disable = no
+    port  = 9999
+    socket_type   = stream
+    protocol    = tcp
+    wait      = no
+    user      = root
+    server     = $SAR_DIR/analyze_sys_start.sh
+    server_args   = test
+}
