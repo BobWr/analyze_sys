@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SAR_DIR=$1
+SAR_DIR=`pwd`
 DATA_DIR=$SAR_DIR/data
 
 ps -ef |grep "sar -u 1" |grep -v "grep" |awk '{print $2}' |xargs -r kill -2
