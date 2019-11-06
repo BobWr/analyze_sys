@@ -10,33 +10,18 @@ mkdir $SAR_DIR/data
 sudo yum install -y xinetd
 #安装sysstat
 sudo yum install -y sysstat
-#配置相应的xinetd服务
-sudo echo \
-"service analyze_sys_start
-{
-    disable = no
-    port  = 9999
-    socket_type   = stream
-    protocol    = tcp
-    wait      = no
-    user      = root
-    server     = $SAR_DIR/analyze_sys_start.sh
-    server_args   = test
-}" > /etc/xinetd.d/analyze_sys_start
-sudo echo \
-"service analyze_sys_stop
-{
-    disable = no
-    port  = 9998
-    socket_type   = stream
-    protocol    = tcp
-    wait      = no
-    user      = root
-    server     = $SAR_DIR/analyze_sys_stop.sh
-    server_args   = test
-}" > /etc/xinetd.d/analyze_sys_stop
-#配置services，注释并添加 $serviceName    $port/tcp
 
+#配置相应的xinetd服务
+cd /etc/xinetd.d/
+sudo wget https://raw.githubusercontent.com/BobWr/analyze_sys/master/analyze_sys_start
+sudo wget https://raw.githubusercontent.com/BobWr/analyze_sys/master/analyze_sys_stop
+
+sudo sed -i "s?bjk?$SAR_DIR?g" analyze_sys_start
+sudo sed -i "s?bjk?$SAR_DIR?g" analyze_sys_stop
+
+sudo 
+
+#配置services，注释并添加 $serviceName    $port/tcp
 if [ -f /etc/services.bak.bjk ]
 then
   sudo rm -f /etc/services
