@@ -1,7 +1,8 @@
 #!/bin/sh
 
 #sar dir
-PWD=`pwd`
+script_abs=$(readlink -f "$0")
+PWD=$(dirname $script_abs)
 SAR_DIR=$PWD/sar
 
 rm -r $SAR_DIR
