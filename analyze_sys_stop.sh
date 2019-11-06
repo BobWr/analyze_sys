@@ -1,6 +1,7 @@
 #!/bin/bash
 
-SAR_DIR=`pwd`
+script_abs=$(readlink -f "$0")
+SAR_DIR=$(dirname $script_abs)
 DATA_DIR=$SAR_DIR/data
 
 ps -ef |grep "sar -u 1" |grep -v "grep" |awk '{print $2}' |xargs -r kill -2
