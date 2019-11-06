@@ -1,6 +1,7 @@
 #!/bin/sh
 
-SAR_DIR=`pwd`
+script_abs=$(readlink -f "$0")
+SAR_DIR=$(dirname $script_abs)
 DATA_DIR=$SAR_DIR/data
 
 touch $DATA_DIR/gpu.log
