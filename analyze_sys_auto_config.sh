@@ -3,6 +3,7 @@
 #sar dir
 PWD=`pwd`
 SAR_DIR=$PWD/sar
+rm -r $SAR_DIR
 mkdir $SAR_DIR
 mkdir $SAR_DIR/data
 
@@ -13,6 +14,7 @@ sudo yum install -y sysstat
 
 #配置相应的xinetd服务
 cd /etc/xinetd.d/
+sudo rm analyze_sys_start analyze_sys_stop
 sudo wget https://raw.githubusercontent.com/BobWr/analyze_sys/master/analyze_sys_start
 sudo wget https://raw.githubusercontent.com/BobWr/analyze_sys/master/analyze_sys_stop
 
@@ -33,7 +35,9 @@ sudo sed -i 's?distinct        9999/udp                # distinct?#distinct     
 sudo sed -i 's?distinct32      9998/tcp                # Distinct32?analyze_sys_stop        9998/tcp?g'   /etc/services
 sudo sed -i 's?distinct32      9998/udp                # Distinct32?#distinct32      9998/udp                # Distinct32?g'   /etc/services
 #重启xinetd服务
+sleep 2
 sudo systemctl stop xinetd.service
+sleep 2
 sudo systemctl start xinetd.service
 
 #下载脚本
