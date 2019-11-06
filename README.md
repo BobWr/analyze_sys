@@ -1,4 +1,4 @@
-# analyze_sys
+# analyze_sys (Only support CentOS 7)
 Get systerm info. Include GPU/CPU/MEMORY/IO/NET.
 
 ### Download auto configure script and execute it.
