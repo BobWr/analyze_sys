@@ -3,7 +3,9 @@
 #sar dir
 PWD=`pwd`
 SAR_DIR=$PWD/sar
+
 rm -r $SAR_DIR
+sleep 1
 mkdir $SAR_DIR
 mkdir $SAR_DIR/data
 
