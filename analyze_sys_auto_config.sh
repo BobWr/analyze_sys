@@ -44,3 +44,11 @@ sudo systemctl restart xinetd.service
 
 #安装sysstat
 sudo yum install -y sysstat
+
+#下载脚本
+cd $SAR_DIR
+wget https://github.com/BobWr/analyze_sys/blob/master/analyze_sys_start.sh
+wget https://github.com/BobWr/analyze_sys/blob/master/analyze_sys_stop.sh
+wget https://github.com/BobWr/analyze_sys/blob/master/get_gpu.sh
+
+chmod +x analyze_sys_start.sh analyze_sys_stop.sh get_gpu.sh
