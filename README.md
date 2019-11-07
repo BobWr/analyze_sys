@@ -1,3 +1,7 @@
+### Now you can try this version implements with `golang`. 
+- [Redirect to branch golang](https://github.com/BobWr/analyze_sys/tree/golang)
+
+
 # analyze_sys (Only support CentOS 7)
 Get systerm info. Include GPU/CPU/MEMORY/IO/NET.
 
