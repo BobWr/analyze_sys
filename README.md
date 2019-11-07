@@ -1,47 +1,60 @@
-# analyze_sys (Only support CentOS 7)
+# analyze_sys
 Get systerm info. Include GPU/CPU/MEMORY/IO/NET.
 
 ### Download auto configure script and execute it.
 
 ```shell
-wget https://raw.githubusercontent.com/BobWr/analyze_sys/master/analyze_sys_auto_config.sh
+wget https://raw.githubusercontent.com/BobWr/analyze_sys/golang/analyze_sys_auto_config.sh
 
 chmod +x analyze_sys_auto_config.sh
 
 ./analyze_sys_auto_config.sh
 ```
 
-### start record
+### start record. Makesure port `9999` is open.
 
 ```shell
-curl localhost:9999
+curl localhost:9999/record
 ```
 
-##### One case this command returns: `curl: (7) Failed connect to localhost:9999; Connection refused. ` that's because of the xinted.service restart failed. you can restart it by yourslef.
+### stop record and get logs. This interface can be called many times.
 
 ```shell
-#stop
-sudo systemctl stop xinetd.service
-
-#start
-sudo systemctl start xinetd.service
-```
-
-##### Makesure command `curl localhost:9999` returns `Analyze start.`and log files will save into `data`.
-
-### stop record
-
-```shell
-curl localhost:9998
+curl localhost:9999/data
 ```
 
 ##### Wait a few minutes until it returns:
 
 ```shell
-HTTP/1.1 200 OK
-Content-Type: text/plain
-Connection: close
-Content-Length: DATA_LENGTH
-
-DATA
+{
+    "net" : {
+        "rxpck_s" : "",
+        "txpck_s" : "",
+        "rxkB_s" : "",
+        "txkB_s" : "",
+        "rxcmp_s" : "",
+        "txcmp_s" : ""
+    },
+    "cpu" : {
+        "user" : "",
+        "nice" : "",
+        "system" : "",
+        "iowait" : "",
+        "steal" : "",
+        "idle" : ""
+    },
+    "mem" : {
+        "kbmemfree" : "",
+        "kbmemused" : "",
+        "memused" : ""
+    },
+    "io" : {
+        "tps" : "",
+        "rtps" : "",
+        "wtps" : ""
+    },
+    "gpu" : {
+        "use" : ""
+    }
+}
 ```

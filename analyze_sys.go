@@ -2,7 +2,7 @@ package main
 
 import "github.com/gin-gonic/gin"
 import "os/exec"
-import "strconv"
+// import "strconv"
 import "bytes"
 import "github.com/gin-contrib/cors"
 
@@ -23,10 +23,12 @@ func main() {
     //run a container, uplimit is 5
     r.GET("/record", func(c *gin.Context) {
 
-    	
-		cmd := exec.Command("/bin/bash", "-c", "analyze_sys_start.sh")
+        // port,err := strconv.Atoi(c.Param("port"))
+        var outStr string
+        
+		// cmd := exec.Command("/bin/bash", "-c", "./docker.sh 1 " + strconv.Itoa(port))
+		cmd := exec.Command("/bin/bash", "-c", "./analyze_sys_start.sh")
 		var out bytes.Buffer
-		var outStr string
 		cmd.Stdout = &out
 		cmd.Run()
 		outStr = out.String()
@@ -41,7 +43,7 @@ func main() {
         var outStr string
         
 		// cmd := exec.Command("/bin/bash", "-c", "./docker.sh 1 " + strconv.Itoa(port))
-		cmd := exec.Command("/bin/bash", "-c", "./analyze_sys_start.sh")
+		cmd := exec.Command("/bin/bash", "-c", "./analyze_sys_stop.sh")
 		var out bytes.Buffer
 		cmd.Stdout = &out
 		cmd.Run()

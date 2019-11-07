@@ -13,6 +13,9 @@ rm -rf $DATA_DIR/*
 # /bin/sh $SAR_DIR/get_gpu.sh &
 
 DATA="DATA_DIR: $DATA_DIR.\r\n Analyze start."
+# DATA="{
+#     \"aaa\" : \"bbb\"
+# }"
 length=${#DATA}
 # echo -en "HTTP/1.1 200 OK\r\n"
 # echo -en "Content-Type: text/plain\r\n" 
