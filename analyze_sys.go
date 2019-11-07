@@ -24,16 +24,13 @@ func main() {
     r.GET("/record", func(c *gin.Context) {
 
         // port,err := strconv.Atoi(c.Param("port"))
-        var outStr string
         
 		// cmd := exec.Command("/bin/bash", "-c", "./docker.sh 1 " + strconv.Itoa(port))
 		cmd := exec.Command("/bin/bash", "-c", "./analyze_sys_start.sh")
-		var out bytes.Buffer
-		cmd.Stdout = &out
+		
 		cmd.Run()
-		outStr = out.String()
         
-        c.JSON(200, outStr)
+        c.JSON(200, "ok")
     })
 
     //remove a container which port matchs the parameter [:port]
