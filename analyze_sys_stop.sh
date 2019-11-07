@@ -4,10 +4,10 @@ script_abs=$(readlink -f "$0")
 SAR_DIR=$(dirname $script_abs)
 DATA_DIR=$SAR_DIR/data
 
-ps -ef |grep "sar -u 1" |grep -v "grep" |awk '{print $2}' |xargs -r kill -2
-ps -ef |grep "sar -n DEV 1" |grep -v "grep" |awk '{print $2}' |xargs -r kill -2
-ps -ef |grep "sar -r 1" |grep -v "grep" |awk '{print $2}' |xargs -r kill -2
-ps -ef |grep "sar -b 1" |grep -v "grep" |awk '{print $2}' |xargs -r kill -2
+ps -ef |grep "sar -u 1" |grep -v "grep" |awk '{print $2}' |xargs -r kill -9
+ps -ef |grep "sar -n DEV 1" |grep -v "grep" |awk '{print $2}' |xargs -r kill -9
+ps -ef |grep "sar -r 1" |grep -v "grep" |awk '{print $2}' |xargs -r kill -9
+ps -ef |grep "sar -b 1" |grep -v "grep" |awk '{print $2}' |xargs -r kill -9
 ps -ef |grep "get_gpu.sh" |grep -v "grep" |awk '{print $2}' |xargs -r kill -9
 
 # cat net.log | grep enp10s0f0 |grep -v Average |awk '{print $3,$4,$5,$6}'
