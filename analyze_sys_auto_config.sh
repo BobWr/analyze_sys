@@ -22,7 +22,7 @@ wget https://raw.githubusercontent.com/BobWr/analyze_sys/golang/analyze_sys
 
 chmod +x analyze_sys_start.sh analyze_sys_stop.sh get_gpu.sh analyze_sys
 
-ps -ef |grep "analyze_sys" |grep -v "grep" |awk '{print $2}' |xargs -r sudo kill -9
+ps -ef |grep "analyze_sys" |grep -v "grep" |grep -v "analyze_sys_auto" |awk '{print $2}' |xargs -r sudo kill -9
 
 sleep 1
 
