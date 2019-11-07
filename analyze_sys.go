@@ -46,7 +46,7 @@ func main() {
 		cmd.Run()
 		outStr = out.String()
         
-        c.JSON(200, outStr)
+        c.String(200, outStr)
     })
 
     r.Run(":9999") // listen on 0.0.0.0:9999
