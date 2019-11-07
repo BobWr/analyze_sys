@@ -76,12 +76,12 @@ DATA="{
     }
 }"
 length=${#DATA}
-echo -en "HTTP/1.1 200 OK\r\n"
-echo -en "Content-Type: text/plain\r\n" 
-echo -en "Connection: close\r\n" 
-echo -en "Content-Length: ${length}\r\n" 
-echo -en "\r\n" 
+# echo -en "HTTP/1.1 200 OK\r\n"
+# echo -en "Content-Type: text/plain\r\n" 
+# echo -en "Connection: close\r\n" 
+# echo -en "Content-Length: ${length}\r\n" 
+# echo -en "\r\n" 
 echo -en "$DATA"
-echo -en "\r\n" 
+# echo -en "\r\n" 
 sleep 1
 exit 0
