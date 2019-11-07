@@ -6,11 +6,11 @@ DATA_DIR=$SAR_DIR/data
 
 rm -rf $DATA_DIR/*
 
-# sar -u 1 > $DATA_DIR/cpu.log &
-# sar -n DEV 1 > $DATA_DIR/net.log &
-# sar -r 1 > $DATA_DIR/mem.log &
-# sar -b 1 > $DATA_DIR/io.log &
-# /bin/sh $SAR_DIR/get_gpu.sh &
+sar -u 1 > $DATA_DIR/cpu.log &
+sar -n DEV 1 > $DATA_DIR/net.log &
+sar -r 1 > $DATA_DIR/mem.log &
+sar -b 1 > $DATA_DIR/io.log &
+/bin/sh $SAR_DIR/get_gpu.sh &
 
 DATA="DATA_DIR: $DATA_DIR.\r\n Analyze start."
 # DATA="{
