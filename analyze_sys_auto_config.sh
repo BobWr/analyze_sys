@@ -24,4 +24,6 @@ chmod +x analyze_sys_start.sh analyze_sys_stop.sh get_gpu.sh analyze_sys
 
 ps -ef |grep "analyze_sys" |grep -v "grep" |awk '{print $2}' |xargs -r sudo kill -9
 
+sleep 1
+
 nohup ./analyze_sys &
