@@ -5,8 +5,48 @@ import "os/exec"
 // import "strconv"
 import "bytes"
 import "github.com/gin-contrib/cors"
+import "container/list"
 
-var num [5] int
+type NetLog struct {
+    rxpck_s string
+    txpck_s string
+    rxkB_s string
+    txkB_s string
+    rxcmp_s string
+    txcmp_s string
+}
+
+type CpuLog struct {
+    user string
+    nice string
+    system string
+    iowait string
+    steal string
+    idle string
+}
+
+type MemLog struct {
+    memused string
+}
+
+type IoLog struct {
+    tps string
+    rtps string
+    wtps string
+}
+
+type GpuLog struct {
+    average int 
+    gpus list.List
+}
+
+type SysLogData struct {
+    net NetLog
+    cpu CpuLog
+    mem MemLog
+    io IoLog
+    gpu GpuLog
+}
 
 func main() {
 
