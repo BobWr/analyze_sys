@@ -9,5 +9,5 @@ touch $DATA_DIR/gpu.log
 while :
 do
   nvidia-smi |awk '{print $13}' | awk '{{printf"%s",$0}}' |awk '{print}' >> $DATA_DIR/gpu.log
-  sleep 0.1
+  sleep 0.5
 done
